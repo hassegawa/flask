@@ -5,15 +5,8 @@ from functools import wraps
 import uuid
 import jwt
 import datetime
-from pydantic import BaseModel
-from flask_openapi3 import Info, Tag
-from flask_openapi3 import OpenAPI
 
-#app = Flask(__name__)
-
-info = Info(title="book API", version="1.0.0")
-app = OpenAPI(__name__, info=info)
-user_tag = Tag(name="user", description="Users manager")
+app = Flask(__name__)
  
 app.config['SECRET_KEY']='5d7016506d674a049965591a1054020d'
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite://///projeto/user.db'
