@@ -1,30 +1,25 @@
-pip install flash
-pip install pyjwt
-pip install datetime
-pip install uuid
-pip install Flask-SQLAlchemy
+## git clone
 
+  * https://github.com/hassegawa/flask.git
 
-apt update
-apt install sqlite3
+  * docker run --rm -it -v ./flask:/app -p 8080:8080 python:3.11-slim-bullseye /bin/bash
 
-doc https://www.bacancytechnology.com/blog/flask-jwt-authentication
+  * cd /app
 
+### install python pakage
+  * pip install -r requirements.txt
 
-flask --app app run --host=0.0.0.0 --port=8080
+### instal SqLite3
+  * apt update
+  * apt install sqlite3
+  * sqlite3 user.db
+  * .quit
 
-# login
-https://pt.linux-console.net/?p=5089
-CSS = https://cdnjs.com/libraries/bulma
+### to create database
+  * python3 migration.py
 
-Em um terminal, você pode definir os valores FLASK_APP e FLASK_DEBUG:
+### RUN
+  * flask --app app run --host=0.0.0.0 --port=8080
 
-export FLASK_APP=project
-export FLASK_DEBUG=1
-
-## db
-  python
-  from project import db, create_app, models
-  app=create_app()
-  app.app_context().push()
-  db.create_all()
+  #### No navegador
+    * localhost:8080
