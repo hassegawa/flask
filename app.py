@@ -25,6 +25,7 @@ def token_required(f):
    @wraps(f)
    def decorator(*args, **kwargs):
        token = None
+    
        if 'x-access-tokens' in request.headers:
            token = request.headers['x-access-tokens']
  
@@ -65,17 +66,20 @@ def login_user():
 
 
 @app.route('/users', methods=['GET'])
-def get_all_users(): 
+@token_required
+def get_all_users(current_user): 
  
    users = Users.query.all()
    result = []  
    for user in users:  
        user_data = {}  
-       user_data['public_id'] = user.public_id 
+     #  user_data['public_id'] = user.public_id 
        user_data['name'] = user.name
-       user_data['password'] = user.password
-       user_data['admin'] = user.admin
+     #  user_data['password'] = user.password
+     #  user_data['admin'] = user.admin
      
        result.append(user_data)  
    return jsonify({'users': result})
 
+if  __name__ == '__main__': 
+    app.run(debug=True)
